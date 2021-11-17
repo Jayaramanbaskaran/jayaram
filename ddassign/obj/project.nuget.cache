@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "z82S+ImK0LOxxmkplfzvk6A3x5wC+DSAjAK1gMLAwoeTpx2zQRLWKniDfWsfcOZdnPY4sqitmtJhOvSYCSN+dQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jayaramanbaskaran\\source\\repos\\ddassign\\ddassign\\ddassign.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jayaramanbaskaran\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512"
+  ],
+  "logs": []
+}
