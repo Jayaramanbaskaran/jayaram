@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: buildAndPush
-        repository: 'dockerrepos'
+        repository: 'jayaram011'
         dockerfile: '$(Build.SourcesDirectory)/ddassign/Dockerfile'
         tags: |
           $(tag)
