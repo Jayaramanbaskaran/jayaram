@@ -35,5 +35,14 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+        tags: 'latest'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'azurecontainer'
+        appType: 'webAppContainer'
+        WebAppName: 'jayaram011'
+        DockerNamespace: 'jayaram011.azurecr.io'
+        DockerRepository: '$(imageRepository)'
+        DockerImageTag: 'latest'
+          
