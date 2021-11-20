@@ -1,30 +1,37 @@
-network.tf
-#############################################################################
-# VARIABLES
-#############################################################################
-variable
-"resource_group_name" {
-  type = string
+terraform {
+required_version = ">= 0.11"
+
+backend "azurerm" {
+storage_account_name = "__terraformstorageaccount__"
+container_name = "terraform"
+key = "terraform.tfstate"
+access_key ="__storagekey__"
+features{}
+}
 }
 provider "azurerm" {
-  version = "=2.0.0"
-  features {}
+features {}
 }
-resource
-"azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = "Australia East"
+
+resource "azurerm_resource_group" "dev" {
+  name     = "PULTerraform"
+  location = "West Europe"
 }
-# Create a virtual network within the resource group
-resource "azurerm_virtual_network" "terraform" {
-  name = "terraform-network"
-  resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
-  address_space = ["10.10.0.0/24"]
+
+resource "azurerm_app_service_plan" "dev" {
+  name                = "__appserviceplan__"
+  location            = "${azurerm_resource_group.dev.location}"
+  resource_group_name = "${azurerm_resource_group.dev.name}"
+
+  sku {
+    tier = "Free"
+    size = "F1"
+  }
 }
-resource "azurerm_subnet" "app-subnet" {
-  name = "appsubnet01"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.terraform.name
-  address_prefix = "10.10.0.0/25"
+
+resource "azurerm_app_service" "dev" {
+  name                = "__appservicename__"
+  location            = "${azurerm_resource_group.dev.location}"
+  resource_group_name = "${azurerm_resource_group.dev.name}"
+  app_service_plan_id = "${azurerm_app_service_plan.dev.id}"
 }
