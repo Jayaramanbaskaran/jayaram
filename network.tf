@@ -15,7 +15,7 @@ provider "azurerm" {
 resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
-    location            = "Central India"
+    location            = "eastus"
     resource_group_name = "jayaramanbaskaran"
 
     tags = {
@@ -34,7 +34,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 # Create public IPs
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
-    location                     = "Central India"
+    location                     = "eastus"
     resource_group_name          = "jayaramanbaskaran"
     allocation_method            = "Dynamic"
 
@@ -46,7 +46,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
-    location            = "Central India"
+    location            = "eastus"
     resource_group_name = "jayaramanbaskaran"
     security_rule {
         name                       = "SSH"
@@ -68,7 +68,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 # Create network interface
 resource "azurerm_network_interface" "myterraformnic" {
     name                      = "myNIC"
-    location                  = "Central India"
+    location                  = "eastus"
     resource_group_name       = "jayaramanbaskaran"
 
     ip_configuration {
@@ -103,7 +103,7 @@ resource "random_id" "randomId" {
 resource "azurerm_storage_account" "mystorageaccount" {
     name                        = "diag${random_id.randomId.hex}"
     resource_group_name         = "jayaramanbaskaran"
-    location                    = "Central India"
+    location                    = "eastus"
     account_tier                = "Standard"
     account_replication_type    = "LRS"
 
@@ -125,7 +125,7 @@ output "tls_private_key" {
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
     name                  = "myVM"
-    location              = "Central India"
+    location              = "eastus"
     resource_group_name   = "jayaramanbaskaran"
     network_interface_ids = [azurerm_network_interface.myterraformnic.id]
     size                  = "Standard_B1"
