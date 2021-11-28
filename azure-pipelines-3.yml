@@ -57,13 +57,14 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
+        ArtifactName: 'artifact'
         publishLocation: 'Container'
 
     - task: DownloadBuildArtifacts@1
       inputs:
         buildType: 'current'
-        artifactName: 'drop'
+        downloadType: 'single'
+        artifactName: 'artifact'
         itemPattern: '**/*.yml'
         downloadPath: '$(System.ArtifactsDirectory)'
 
@@ -72,6 +73,5 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'aks'
         namespace: 'default'
-        
         manifests: '$(System.ArtifactsDirectory)/deploy.yml'
         containers: 'jayaram011.azurecr.io/jayaramanbaskaranjayaram:latest'
