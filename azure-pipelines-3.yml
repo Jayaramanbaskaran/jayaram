@@ -49,7 +49,7 @@ stages:
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/*.yaml'
+        Contents: '**/*.yml'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
@@ -64,7 +64,7 @@ stages:
       inputs:
         buildType: 'current'
         artifactName: 'drop'
-        itemPattern: '**/*.yaml'
+        itemPattern: '**/*.yml'
         downloadPath: '$(System.ArtifactsDirectory)'
 
     - task: KubernetesManifest@0
