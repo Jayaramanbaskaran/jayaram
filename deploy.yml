@@ -16,7 +16,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: sampleapp
-        image: jayaram011.azurecr.io/jayaramanbaskaranjayaram
+        image: jayaram011.azurecr.io/jayaramanbaskaranjayaram:77
         ports:
         - containerPort: 80
 
