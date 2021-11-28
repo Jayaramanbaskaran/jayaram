@@ -71,5 +71,7 @@ stages:
       inputs:
         action: 'deploy'
         kubernetesServiceConnection: 'aks'
-        containers: 'jayaram011.azurecr.io/jayaramanbaskaranjayaram:latest'
+        namespace: 'default'
+        
         manifests: '$(System.ArtifactsDirectory)/deploy.yml'
+        containers: 'jayaram011.azurecr.io/jayaramanbaskaranjayaram:latest'
