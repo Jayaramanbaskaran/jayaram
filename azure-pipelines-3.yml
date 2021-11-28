@@ -74,4 +74,4 @@ stages:
         kubernetesServiceConnection: 'aks'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/deploy.yml'
-        containers: 'jayaram011.azurecr.io/jayaramanbaskaranjayaram'
+        containers: 'jayaram011.azurecr.io/jayaramanbaskaranjayaram:77'
