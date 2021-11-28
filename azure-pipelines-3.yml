@@ -61,8 +61,8 @@ stages:
     - task: DownloadBuildArtifacts@1
       inputs:
         buildType: 'current'
-        downloadType: 'single'
         artifactName: 'drop'
+        itemPattern: '**/*.yaml'
         downloadPath: '$(System.ArtifactsDirectory)'
 
     - task: KubernetesManifest@0
