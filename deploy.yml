@@ -19,6 +19,7 @@ spec:
         image: jayaram011.azurecr.io/jayaramanbaskaranjayaram:latest
         ports:
         - containerPort: 80
+        command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
 
 ---
 apiVersion: v1
